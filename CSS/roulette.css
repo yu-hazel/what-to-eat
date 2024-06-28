@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.roulette-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 500px;
+}
+
+canvas {
+  transition: 2s;
+  pointer-events: none;
+}
+
+#marker {
+  width: 50px;
+  height: 10px;
+  background: #000;
+  position: absolute;
+  top: 40%;
+  right: 0px;
+  /* canvas의 오른쪽에 위치 */
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* 메뉴가 넘칠 때 줄 바꿈 */
+  margin-top: 20px;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 150px;
+  margin-right: 10px;
+}
+
+button {
+  background: #febf00;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:active {
+  background: #444;
+  color: #f9f9f9;
+}
+
+#menuList {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  /* 메뉴가 넘칠 때 줄 바꿈 */
+  justify-content: center;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  font-size: 0.8rem;
+}
+
+.menu-item span {
+  margin-right: 5px;
+}
+
+.menu-item button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu-item button:hover {
+  background: #ff1a1a;
+}
+
+#home-button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #febf00;
+  font-family: 'ONE-Mobile-POP';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

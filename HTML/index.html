@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/roulette.css">
+  <title>Weather</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="search-box">
+      <i class="fa-solid fa-location-dot"></i>
+      <input type="text" placeholder="지역을 입력해주세요." id="search-input">
+      <button class="fa-solid fa-magnifying-glass"></button>
+    </div>
+
+    <div class="not-found">
+      <iframe src="https://lottie.host/embed/57f97fb0-933c-48cd-ba3c-14b60aa01c57/ycrh11e795.json"
+        style="width: 200px; height: 200px;"></iframe>
+      <p>다시 한번 검색해보시겠어요...?🙏🏻</p>
+    </div>
+
+    <div class="weather-box">
+      <div id="weather-animation"></div>
+      <p class="temperature"></p>
+      <p class="description"></p>
+    </div>
+
+    <div class="weather-details">
+      <div class="humidity">
+        <i class="fa-solid fa-water"></i>
+        <div class="text">
+          <span></span>
+          <p>습도</p>
+        </div>
+      </div>
+      <div class="wind">
+        <i class="fa-solid fa-wind"></i>
+        <div class="text">
+          <span></span>
+          <p>풍속</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 룰렛 -->
+  <div class="roulette-container">
+    <div id="marker"></div>
+    <canvas width="480" height="480"></canvas>
+    <div class="controls">
+      <input type="text" id="menuInput" placeholder="메뉴 추가" onkeypress="handleKeyPress(event)">
+      <button onclick="addMenu()">메뉴 추가</button>
+      <button id="rotateBtn" onclick="rotate()">룰렛 돌리기</button>
+    </div>
+    <div id="menuList"></div>
+  </div>
+  <!-- footer 부분 웨이브효과 -->
+  <section>
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+  </section>
+
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+  <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+  <script src="../JS/weather.js"></script>
+  <script src="../JS/roulette.js"></script>
+</body>
+
+</html>
