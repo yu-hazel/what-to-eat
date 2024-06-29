@@ -9,14 +9,14 @@
     rel="stylesheet">
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/roulette.css">
-  <title>Weather</title>
+  <title>그래서 뭐 먹지?</title>
 </head>
 
 <body>
   <div class="container">
     <div class="search-box">
       <i class="fa-solid fa-location-dot"></i>
-      <input type="text" placeholder="지역을 입력해주세요." id="search-input">
+      <input type="text" placeholder="지역을 입력해주세요. (예 : 청주시)" id="search-input">
       <button class="fa-solid fa-magnifying-glass"></button>
     </div>
 
@@ -49,8 +49,10 @@
       </div>
     </div>
   </div>
+
+  <button id="find-restaurant" style="display: none;">지금 날씨와 어울리는 음식점 찾아보기</button>
   <!-- 룰렛 -->
-  <div class="roulette-container">
+  <!-- <div class="roulette-container">
     <div id="marker"></div>
     <canvas width="480" height="480"></canvas>
     <div class="controls">
@@ -59,7 +61,7 @@
       <button id="rotateBtn" onclick="rotate()">룰렛 돌리기</button>
     </div>
     <div id="menuList"></div>
-  </div>
+  </div> -->
   <!-- footer 부분 웨이브효과 -->
   <section>
     <div class="wave wave1"></div>
