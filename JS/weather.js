@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const weatherBox = document.querySelector(".weather-box");
   const weatherDetails = document.querySelector(".weather-details");
   const error404 = document.querySelector(".not-found");
+  const findRestaurantBtn = document.querySelector("#find-restaurant"); // 음식점 찾기 버튼 추가
 
   const fetchWeather = () => {
     const openWeatherApiKey = "ae8e063da1df5b402ef32dd62bf29536";
@@ -24,8 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherDetails.style.display = "none";
           error404.style.display = "block";
           error404.classList.add("fadeIn");
+          findRestaurantBtn.style.display = "none"; // 버튼 숨기기
           return;
         }
+
+        console.log(json);
+        // 0629 혜인 추가 : 날씨 정보 어떻게 받아오는지 확인용 (weather[0].main 에서 날씨 설명 확인가능)
+        console.log(json.weather[0].main)
 
         error404.style.display = "none"; // 404 페이지 숨기기
         error404.classList.remove("fadeIn");
@@ -59,6 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
             iframe.src =
               "https://lottie.host/embed/08d3294a-df23-4964-9d70-491df00fb25f/e4DIx6PoCC.json";
             break;
+          case "Mist":
+            iframe.src =
+              "https://lottie.host/embed/2475a98a-42ce-49ae-8abb-a24b599eb9e6/nZTmfKv5b2.json";
+            break;
           default:
             iframe.src = "";
         }
@@ -82,6 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherBox.classList.add("fadeIn");
         weatherDetails.classList.add("fadeIn");
         container.style.height = "590px";
+
+        findRestaurantBtn.style.display = "block"; // 버튼 표시
+        // 결과에 따른 정보 map.html로 넘김
+        findRestaurantBtn.addEventListener("click", () => {
+          const weatherMain = json.weather[0].main;
+          const city = searchInput.value.trim();
+          window.location.href = `map.html?city=${city}&weather=${weatherMain}`;
+        });
       })
       .catch(error => {
         console.error("Error fetching data:", error);
@@ -91,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
         error404.style.display = "block";
         error404.classList.add("fadeIn");
         error404.textContent = "데이터를 불러오는 중 오류가 발생했습니다.";
+
+        findRestaurantBtn.style.display = "none"; // 버튼 숨기기
       });
   };
 
@@ -99,5 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") {
       fetchWeather();
     }
+  });
+
+  findRestaurantBtn.addEventListener("click", () => {
+    window.location.href = "map.html"; // 버튼 클릭 시 이동
   });
 });
