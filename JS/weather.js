@@ -120,44 +120,17 @@ document.addEventListener("DOMContentLoaded", () => {
           case "Rain":
             foodRecommendationText.textContent =
               "비가 오네요, 이런 음식은 어때요?";
-            foodList = [
-              "파전",
-              "오뎅탕",
-              "국밥",
-              "칼국수",
-              "부대찌개",
-              "된장찌개",
-              "라면",
-              "전",
-            ];
+            foodList = [ "파전", "오뎅탕", "국밥", "칼국수", "부대찌개", "된장찌개", "라면", "전", ];
             break;
           case "Clouds":
             foodRecommendationText.textContent =
               "구름 낀 날이네요, 이런 음식은 어때요?";
-            foodList = [
-              "마라탕",
-              "국밥",
-              "튀김",
-              "순대국",
-              "제육볶음",
-              "닭갈비",
-              "보쌈",
-              "족발",
-            ];
+            foodList = [ "마라탕", "국밥", "튀김", "순대국", "제육볶음", "닭갈비", "보쌈", "족발", ];
             break;
           case "Clear":
             foodRecommendationText.textContent =
               "맑은 날씨네요, 이런 음식은 어때요?";
-            foodList = [
-              "카페",
-              "아이스크림",
-              "샐러드",
-              "브런치",
-              "스시",
-              "샌드위치",
-              "파스타",
-              "스테이크",
-            ];
+            foodList = [ "카페", "아이스크림", "샐러드", "브런치", "스시", "샌드위치", "파스타", "스테이크", ];
             break;
           default:
             foodRecommendationText.textContent = "이 메뉴는 어때요?";
@@ -167,8 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 리스트를 랜덤으로 섞기
         foodList.sort(() => Math.random() - 0.5);
 
-        // 첫 번째 8개의 음식 버튼 만들기
-        foodList.slice(0, 8).forEach(food => {
+        // 추천 음식 리스트 8개중 4개 도출
+        foodList.slice(0, 4).forEach(food => {
           const button = document.createElement("button");
           button.textContent = food;
           button.addEventListener("click", () => {
