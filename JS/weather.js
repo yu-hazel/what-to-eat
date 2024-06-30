@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const weatherBox = document.querySelector(".weather-box");
   const weatherDetails = document.querySelector(".weather-details");
   const error404 = document.querySelector(".not-found");
-  const findRestaurantBtn = document.querySelector("#find-restaurant"); // 음식점 찾기 버튼 추가
+  const foodRecommendations = document.querySelector(".food-recommendations"); 
+  const foodRecommendationText = document.querySelector("#food-recommendation-text");
+  const findRestaurantBtn = document.querySelector("#find-restaurant");
+  const foodButtons = document.querySelector("#food-buttons");
+
 
   const fetchWeather = () => {
     const openWeatherApiKey = "ae8e063da1df5b402ef32dd62bf29536";
@@ -93,13 +97,49 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherDetails.classList.add("fadeIn");
         container.style.height = "590px";
 
-        findRestaurantBtn.style.display = "block"; // 버튼 표시
-        // 결과에 따른 정보 map.html로 넘김
-        findRestaurantBtn.addEventListener("click", () => {
-          const weatherMain = json.weather[0].main;
-          const city = searchInput.value.trim();
-          window.location.href = `map.html?city=${city}&weather=${weatherMain}`;
+        // findRestaurantBtn.style.display = "block"; // 버튼 표시
+        // // 결과에 따른 정보 map.html로 넘김
+        // findRestaurantBtn.addEventListener("click", () => {
+        //   const weatherMain = json.weather[0].main;
+        //   const city = searchInput.value.trim();
+        //   window.location.href = `map.html?city=${city}&weather=${weatherMain}`;
+        // });
+
+      // 날씨에 따른 음식 추천 버튼 설정
+      foodRecommendations.style.display = "block";
+      foodRecommendationText.style.display = "block"
+      foodButtons.innerHTML = ""; // 기존 버튼 초기화
+
+      let foodList = [];
+      switch (json.weather[0].main) {
+        case 'Rain':
+          foodRecommendationText.textContent = "비가 오네요, 이런 음식은 어때요?";
+          foodList = ['파전', '오뎅탕', '국밥', '칼국수'];
+          break;
+        case 'Clouds':
+          foodRecommendationText.textContent = "구름 낀 날이네요, 이런 음식은 어때요?";
+          foodList = ['마라탕', '국밥', '튀김'];
+          break;
+        case 'Clear':
+          foodRecommendationText.textContent = "맑은 날씨네요, 이런 음식은 어때요?";
+          foodList = ['카페', '아이스크림', '샐러드', '브런치'];
+          break;
+        // 다른 날씨에 따른 설정 추가 가능
+        default:
+          foodRecommendationText.textContent = "이 메뉴는 어때요?";
+          foodList = ['음식점'];
+        // ❗️ 이때 키워드 리스트로 바로 이동시키기 (추가구현필요)
+      }
+
+      foodList.forEach(food => {
+        const button = document.createElement('button');
+        button.textContent = food;
+        button.addEventListener('click', () => {
+          window.location.href = `map.html?city=${city}&food=${food}`;  // 클릭 이벤트 설정
         });
+        foodButtons.appendChild(button);
+      });
+
       })
       .catch(error => {
         console.error("Error fetching data:", error);
