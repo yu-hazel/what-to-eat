@@ -312,3 +312,20 @@ section .wave.wave4 {
     background-position-x: -1000px;
   }
 }
+
+.title_intro:after {
+  content: '|';
+  display: inline-block;
+  font-size: 40px;
+  animation: moveCursor 500ms infinite;
+}
+
+@keyframes moveCursor {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const findRestaurantBtn = document.querySelector("#find-restaurant");
   const foodButtons = document.querySelector("#food-buttons");
+  const introTitle = document.querySelector(".title_intro");
+
+  // 타이틀 문구 타이핑
+  const title = "그래서 뭐 먹지? 🤔";
+  let cnt = 0;
+
+  const typingIntroTitle = () => {
+    if (cnt < title.length) {
+      introTitle.innerHTML += title[cnt++];
+    } else {
+      clearInterval(timer);
+    }
+  };
+
+  const timer = setInterval(typingIntroTitle, 200);
 
   const fetchWeather = () => {
     const openWeatherApiKey = "ae8e063da1df5b402ef32dd62bf29536";
@@ -18,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (city === "") return;
 
-    // OpenWeatherMap API를 사용하여 한글 주소로 직접 날씨 정보 조회
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${openWeatherApiKey}`
     )
@@ -30,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
           weatherDetails.style.display = "none";
           error404.style.display = "block";
           error404.classList.add("fadeIn");
+          error404.innerHTML =
+            '<iframe src="https://lottie.host/embed/57f97fb0-933c-48cd-ba3c-14b60aa01c57/ycrh11e795.json" style="width: 400px; height: 200px; border: none;"></iframe><p>다시 한번 검색해보시겠어요...?🙏🏻</p>';
           findRestaurantBtn.style.display = "none"; // 버튼 숨기기
           return;
         }
@@ -104,19 +120,45 @@ document.addEventListener("DOMContentLoaded", () => {
           case "Rain":
             foodRecommendationText.textContent =
               "비가 오네요, 이런 음식은 어때요?";
-            foodList = [ "파전", "오뎅탕", "국밥", "칼국수", "부대찌개", "된장찌개", "라면", "전", ];
+            foodList = [
+              "파전",
+              "오뎅탕",
+              "국밥",
+              "칼국수",
+              "부대찌개",
+              "된장찌개",
+              "라면",
+              "전",
+            ];
             break;
           case "Clouds":
             foodRecommendationText.textContent =
               "구름 낀 날이네요, 이런 음식은 어때요?";
-            foodList = [ "마라탕", "국밥", "튀김", "순대국", "제육볶음", "닭갈비", "보쌈", "족발", ];
+            foodList = [
+              "마라탕",
+              "국밥",
+              "튀김",
+              "순대국",
+              "제육볶음",
+              "닭갈비",
+              "보쌈",
+              "족발",
+            ];
             break;
           case "Clear":
             foodRecommendationText.textContent =
               "맑은 날씨네요, 이런 음식은 어때요?";
-            foodList = [ "카페", "아이스크림", "샐러드", "브런치", "스시", "샌드위치", "파스타", "스테이크", ];
+            foodList = [
+              "카페",
+              "아이스크림",
+              "샐러드",
+              "브런치",
+              "스시",
+              "샌드위치",
+              "파스타",
+              "스테이크",
+            ];
             break;
-          // 다른 날씨에 따른 설정 추가 가능
           default:
             foodRecommendationText.textContent = "이 메뉴는 어때요?";
             foodList = ["음식점"];
@@ -126,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         foodList.sort(() => Math.random() - 0.5);
 
         // 첫 번째 8개의 음식 버튼 만들기
-        foodList.slice(0, 4).forEach(food => {
+        foodList.slice(0, 8).forEach(food => {
           const button = document.createElement("button");
           button.textContent = food;
           button.addEventListener("click", () => {
