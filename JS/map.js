@@ -197,7 +197,13 @@ document.addEventListener("DOMContentLoaded", function () {
         kakaoScript.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a62d3836bded4f7ea62b624e4fc5ff75&libraries=services";
         kakaoScript.async = true;
         kakaoScript.defer = true;
-        kakaoScript.onload = initializeMap;
+        kakaoScript.onload = () => {
+            console.log("Kakao Maps API loaded");
+            initializeMap();
+        };
+        kakaoScript.onerror = () => {
+            console.error("Failed to load Kakao Maps API");
+        };
         document.head.appendChild(kakaoScript);
     } else {
         initializeMap();
