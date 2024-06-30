@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Kakao Maps API가 로드된 후에 실행되도록 보장
     if (typeof kakao === "undefined") {
         const kakaoScript = document.createElement('script');
-        kakaoScript.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=a62d3836bded4f7ea62b624e4fc5ff75&libraries=services";
+        kakaoScript.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a62d3836bded4f7ea62b624e4fc5ff75&libraries=services";
         kakaoScript.async = true;
         kakaoScript.defer = true;
         kakaoScript.onload = initializeMap;
@@ -209,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const city = params.get('city');
         const food = params.get('food');
         const keywordInput = document.getElementById('keyword');
+        console.log("카카오맵 로드중")
 
         if (city && food) {
             keywordInput.value = `${city} ${food}`;
