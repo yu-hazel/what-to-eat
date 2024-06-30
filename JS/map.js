@@ -192,7 +192,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     // Kakao Maps API가 로드된 후에 실행되도록 보장
-    if (typeof kakao === "undefined") {
+    if (typeof kakao === "undefined") { // 이미 로드되었으면 실행 x
         const kakaoScript = document.createElement('script');
         kakaoScript.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=a62d3836bded4f7ea62b624e4fc5ff75&libraries=services";
         kakaoScript.async = true;
