@@ -1,23 +1,33 @@
 // index.html에서 사용자가 검색한 키워드 받아옴
 const params = new URLSearchParams(window.location.search);
 const city = params.get('city');
-const weather = params.get('weather');
+// const weather = params.get('weather');
+const food = params.get('food');
 const keywordInput = document.getElementById('keyword');
 
-if (city && weather) {
-    switch (weather) {
-        case 'Rain':
-            const rainyDayFoods = ['파전', '오뎅탕', '국밥', '칼국수'];
-            const randomFood = rainyDayFoods[Math.floor(Math.random() * rainyDayFoods.length)];
-            keywordInput.value = `${city} ${randomFood}`;
-            break;
-        case 'Clear':
-            keywordInput.value = `${city} 카페`;
-            break;
-        // 다른 날씨에 따른 키워드 설정
-        default:
-            keywordInput.value = `${city} 음식점`;
-    }
+// if (city && weather) {
+//     switch (weather) {
+//         case 'Rain':
+//             const rainyDayFoods = ['파전', '오뎅탕', '국밥', '칼국수'];
+//             const rainyRandomFood = rainyDayFoods[Math.floor(Math.random() * rainyDayFoods.length)];
+//             keywordInput.value = `${city} ${rainyRandomFood}`;
+//             break;
+//         case 'Clear':
+//             keywordInput.value = `${city} 카페`;
+//             break;
+//         case 'Clouds':
+//             const cloudyDayFoods = ['마라탕', '막걸리', '빈대떡', '부침개', '떡볶이', '튀김'];
+//             const coludyRandomFood = cloudyDayFoods[Math.floor(Math.random() * cloudyDayFoods.length)];
+//             keywordInput.value = `${city} ${coludyRandomFood}`;
+//             break;
+//         // 다른 날씨에 따른 키워드 설정
+//         default:
+//             keywordInput.value = `${city} 음식점`;
+//     }
+// }
+
+if (city && food) {
+    keywordInput.value = `${city} ${food}`;
 }
 
 
@@ -212,35 +222,4 @@ function removeAllChildNods(el) {
     while (el.hasChildNodes()) {
         el.removeChild(el.lastChild);
     }
-}
-
-// 랜덤 키워드 배열
-var foodKeywords = ['칼국수', '파전', '국밥', '오뎅탕', '순두부찌개'];
-var meatKeywords = ['삼겹살', '소고기', '곱창'];
-
-// '비 올 때' 버튼 클릭 시 랜덤 키워드 입력
-function randomFoodKeyword() {
-    var randomIndex = Math.floor(Math.random() * foodKeywords.length);
-    var randomKeyword = foodKeywords[randomIndex];
-    document.getElementById('keyword').value = randomKeyword;
-}
-
-// '미세먼지 나쁜 날' 버튼 클릭 시 랜덤 키워드 입력
-function randomMeatKeyword() {
-    var randomIndex = Math.floor(Math.random() * meatKeywords.length);
-    var randomKeyword = meatKeywords[randomIndex];
-    document.getElementById('keyword').value = randomKeyword;
-}
-
-// 키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
-    var keyword = document.getElementById('keyword').value;
-
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
-        return false;
-    }
-
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch(keyword, placesSearchCB);
 }

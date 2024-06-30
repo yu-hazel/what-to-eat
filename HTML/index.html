@@ -13,6 +13,10 @@
 </head>
 
 <body>
+  <div class="title">
+    <h2>그래서 뭐 먹지?🤔</h2>
+    <p>지금 날씨에 딱 맞는 메뉴를 추천할게요</p>
+  </div>
   <div class="container">
     <div class="search-box">
       <i class="fa-solid fa-location-dot"></i>
@@ -50,7 +54,12 @@
     </div>
   </div>
 
-  <button id="find-restaurant" style="display: none;">지금 날씨와 어울리는 음식점 찾아보기</button>
+  <div class="food-recommendations" style="display: none;">
+    <p id="food-recommendation-text"></p>
+    <div id="food-buttons"></div>
+  </div>
+
+  <!-- <button id="find-restaurant">지금 날씨와 어울리는 음식점 찾아보기</button> -->
   <!-- 룰렛 -->
   <!-- <div class="roulette-container">
     <div id="marker"></div>
@@ -63,12 +72,12 @@
     <div id="menuList"></div>
   </div> -->
   <!-- footer 부분 웨이브효과 -->
-  <section>
+  <!-- <section>
     <div class="wave wave1"></div>
     <div class="wave wave2"></div>
     <div class="wave wave3"></div>
     <div class="wave wave4"></div>
-  </section>
+  </section> -->
 
   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
