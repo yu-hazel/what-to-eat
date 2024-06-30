@@ -5,11 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const weatherBox = document.querySelector(".weather-box");
   const weatherDetails = document.querySelector(".weather-details");
   const error404 = document.querySelector(".not-found");
-  const foodRecommendations = document.querySelector(".food-recommendations"); 
-  const foodRecommendationText = document.querySelector("#food-recommendation-text");
+  const foodRecommendations = document.querySelector(".food-recommendations");
+  const foodRecommendationText = document.querySelector(
+    "#food-recommendation-text"
+  );
   const findRestaurantBtn = document.querySelector("#find-restaurant");
   const foodButtons = document.querySelector("#food-buttons");
-
 
   const fetchWeather = () => {
     const openWeatherApiKey = "ae8e063da1df5b402ef32dd62bf29536";
@@ -32,10 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
           findRestaurantBtn.style.display = "none"; // 버튼 숨기기
           return;
         }
-
-        console.log(json);
-        // 0629 혜인 추가 : 날씨 정보 어떻게 받아오는지 확인용 (weather[0].main 에서 날씨 설명 확인가능)
-        console.log(json.weather[0].main)
 
         error404.style.display = "none"; // 404 페이지 숨기기
         error404.classList.remove("fadeIn");
@@ -97,49 +94,46 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherDetails.classList.add("fadeIn");
         container.style.height = "590px";
 
-        // findRestaurantBtn.style.display = "block"; // 버튼 표시
-        // // 결과에 따른 정보 map.html로 넘김
-        // findRestaurantBtn.addEventListener("click", () => {
-        //   const weatherMain = json.weather[0].main;
-        //   const city = searchInput.value.trim();
-        //   window.location.href = `map.html?city=${city}&weather=${weatherMain}`;
-        // });
+        // 날씨에 따른 음식 추천 버튼 설정
+        foodRecommendations.style.display = "block";
+        foodRecommendationText.style.display = "block";
+        foodButtons.innerHTML = ""; // 기존 버튼 초기화
 
-      // 날씨에 따른 음식 추천 버튼 설정
-      foodRecommendations.style.display = "block";
-      foodRecommendationText.style.display = "block"
-      foodButtons.innerHTML = ""; // 기존 버튼 초기화
+        let foodList = [];
+        switch (json.weather[0].main) {
+          case "Rain":
+            foodRecommendationText.textContent =
+              "비가 오네요, 이런 음식은 어때요?";
+            foodList = [ "파전", "오뎅탕", "국밥", "칼국수", "부대찌개", "된장찌개", "라면", "전", ];
+            break;
+          case "Clouds":
+            foodRecommendationText.textContent =
+              "구름 낀 날이네요, 이런 음식은 어때요?";
+            foodList = [ "마라탕", "국밥", "튀김", "순대국", "제육볶음", "닭갈비", "보쌈", "족발", ];
+            break;
+          case "Clear":
+            foodRecommendationText.textContent =
+              "맑은 날씨네요, 이런 음식은 어때요?";
+            foodList = [ "카페", "아이스크림", "샐러드", "브런치", "스시", "샌드위치", "파스타", "스테이크", ];
+            break;
+          // 다른 날씨에 따른 설정 추가 가능
+          default:
+            foodRecommendationText.textContent = "이 메뉴는 어때요?";
+            foodList = ["음식점"];
+        }
 
-      let foodList = [];
-      switch (json.weather[0].main) {
-        case 'Rain':
-          foodRecommendationText.textContent = "비가 오네요, 이런 음식은 어때요?";
-          foodList = ['파전', '오뎅탕', '국밥', '칼국수'];
-          break;
-        case 'Clouds':
-          foodRecommendationText.textContent = "구름 낀 날이네요, 이런 음식은 어때요?";
-          foodList = ['마라탕', '국밥', '튀김'];
-          break;
-        case 'Clear':
-          foodRecommendationText.textContent = "맑은 날씨네요, 이런 음식은 어때요?";
-          foodList = ['카페', '아이스크림', '샐러드', '브런치'];
-          break;
-        // 다른 날씨에 따른 설정 추가 가능
-        default:
-          foodRecommendationText.textContent = "이 메뉴는 어때요?";
-          foodList = ['음식점'];
-        // ❗️ 이때 키워드 리스트로 바로 이동시키기 (추가구현필요)
-      }
+        // 리스트를 랜덤으로 섞기
+        foodList.sort(() => Math.random() - 0.5);
 
-      foodList.forEach(food => {
-        const button = document.createElement('button');
-        button.textContent = food;
-        button.addEventListener('click', () => {
-          window.location.href = `map.html?city=${city}&food=${food}`;  // 클릭 이벤트 설정
+        // 첫 번째 8개의 음식 버튼 만들기
+        foodList.slice(0, 4).forEach(food => {
+          const button = document.createElement("button");
+          button.textContent = food;
+          button.addEventListener("click", () => {
+            window.location.href = `map.html?city=${city}&food=${food}`; // 클릭 이벤트 설정
+          });
+          foodButtons.appendChild(button);
         });
-        foodButtons.appendChild(button);
-      });
-
       })
       .catch(error => {
         console.error("Error fetching data:", error);
@@ -148,7 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherDetails.style.display = "none";
         error404.style.display = "block";
         error404.classList.add("fadeIn");
-        error404.textContent = "데이터를 불러오는 중 오류가 발생했습니다.";
+        error404.innerHTML =
+          '<iframe src="https://lottie.host/embed/57f97fb0-933c-48cd-ba3c-14b60aa01c57/ycrh11e795.json" style="width: 400px; height: 200px; border: none;"></iframe><p>다시 한번 검색해보시겠어요...?🙏🏻</p>';
 
         findRestaurantBtn.style.display = "none"; // 버튼 숨기기
       });
