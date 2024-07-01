@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const city = params.get('city');
     const food = params.get('food');
     const keywordInput = document.getElementById('keyword');
+    const homeButton = document.querySelector('#home-button');
+
+    homeButton.addEventListener("click", ()=> {
+      window.history.back();
+    })
 
     // index.html에서 도출된 4개 음식 키워드 가져옴
     const storedFoods = JSON.parse(localStorage.getItem('selectedFoods') || '[]');
