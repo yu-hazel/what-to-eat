@@ -68,7 +68,8 @@ body {
   font-size: 24px;
   font-weight: 500;
   text-transform: uppercase;
-  padding-left: 32px;
+  padding-left: 40px;
+  font-family: 'BMJua';
 }
 
 .search-box input::placeholder {
@@ -328,4 +329,10 @@ section .wave.wave4 {
   to {
     opacity: 0;
   }
+}
+
+#food-buttons button {
+  background-color: #FA8937;
+  color: #fff;
+  font-family: 'BMJua';
 }

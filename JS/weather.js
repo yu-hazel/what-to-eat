@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const findRestaurantBtn = document.querySelector("#find-restaurant");
   const foodButtons = document.querySelector("#food-buttons");
   const introTitle = document.querySelector(".title_intro");
+  const description = document.querySelector(".weather-box .description");
+
 
   // 타이틀 문구 타이핑
   const title = "그래서 뭐 먹지? 🤔";
@@ -61,30 +63,39 @@ document.addEventListener("DOMContentLoaded", () => {
         iframe.style.height = "200px";
         iframe.style.border = "none";
 
+        console.log(json);
+        console.log(json.weather[0].description); // 여기서 현재 날씨 문구 메인에 띄워줌
+
         switch (json.weather[0].main) {
           case "Clear":
             iframe.src =
               "https://lottie.host/embed/93264c63-2f94-499d-802d-2272a9f6a32d/trG00gxeOo.json";
+              description.textContent = '맑음';
             break;
           case "Rain":
             iframe.src =
               "https://lottie.host/embed/9ec7bbb7-a95e-47bd-b6a0-81d67a6f1127/IUDprNQ4Eh.json";
+            description.textContent = '비';
             break;
           case "Snow":
             iframe.src =
               "https://lottie.host/embed/cf580154-2b57-4a12-88b9-332bea8356ed/5ANGutl2lr.json";
+            description.textContent = '눈';
             break;
           case "Clouds":
             iframe.src =
               "https://lottie.host/embed/9f02a567-fd23-4b3c-9e6c-b1b34d8dc317/JMjifTSZvN.json";
+            description.textContent = '흐림';
             break;
           case "Haze":
             iframe.src =
               "https://lottie.host/embed/08d3294a-df23-4964-9d70-491df00fb25f/e4DIx6PoCC.json";
+            description.textContent = '연무';
             break;
           case "Mist":
             iframe.src =
               "https://lottie.host/embed/2475a98a-42ce-49ae-8abb-a24b599eb9e6/nZTmfKv5b2.json";
+            description.textContent = '안개';
             break;
           default:
             iframe.src = "";
@@ -93,14 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherAnimation.appendChild(iframe);
 
         const temperature = document.querySelector(".weather-box .temperature");
-        const description = document.querySelector(".weather-box .description");
+        // const description = document.querySelector(".weather-box .description");
         const humidity = document.querySelector(
           ".weather-details .humidity span"
         );
         const wind = document.querySelector(".weather-details .wind span");
 
         temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
-        description.innerHTML = `${json.weather[0].description}`;
+        // description.innerHTML = `${json.weather[0].description}`;
         humidity.innerHTML = `${json.main.humidity}%`;
         wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
 
@@ -120,17 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
           case "Rain":
             foodRecommendationText.textContent =
               "비가 오네요, 이런 음식은 어때요?";
-            foodList = [ "파전", "오뎅탕", "국밥", "칼국수", "부대찌개", "된장찌개", "라면", "전", ];
+            foodList = ["파전", "오뎅탕", "국밥", "칼국수", "부대찌개", "된장찌개", "라면", "전",];
             break;
           case "Clouds":
             foodRecommendationText.textContent =
               "구름 낀 날이네요, 이런 음식은 어때요?";
-            foodList = [ "마라탕", "국밥", "튀김", "순대국", "제육볶음", "닭갈비", "보쌈", "족발", ];
+            foodList = ["마라탕", "국밥", "튀김", "순대국", "제육볶음", "닭갈비", "보쌈", "족발",];
             break;
           case "Clear":
             foodRecommendationText.textContent =
               "맑은 날씨네요, 이런 음식은 어때요?";
-            foodList = [ "카페", "아이스크림", "샐러드", "브런치", "스시", "샌드위치", "파스타", "스테이크", ];
+            foodList = ["카페", "아이스크림", "샐러드", "브런치", "스시", "샌드위치", "파스타", "스테이크",];
             break;
           default:
             foodRecommendationText.textContent = "이 메뉴는 어때요?";
