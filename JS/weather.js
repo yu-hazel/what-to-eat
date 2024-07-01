@@ -152,13 +152,19 @@ document.addEventListener("DOMContentLoaded", () => {
         foodList.sort(() => Math.random() - 0.5);
 
         // 추천 음식 리스트 8개중 4개 도출
-        foodList.slice(0, 4).forEach(food => {
+        const selectedFoods = foodList.slice(0, 4);
+
+        // 4개 랜덤으로 뽑은 것 로컬스토리지에 저장함
+        localStorage.setItem('selectedFoods', JSON.stringify(selectedFoods));
+
+        selectedFoods.forEach(food => {
           const button = document.createElement("button");
           button.textContent = food;
           button.addEventListener("click", () => {
             window.location.href = `map.html?city=${city}&food=${food}`; // 클릭 이벤트 설정
           });
           foodButtons.appendChild(button);
+          console.log(food);
         });
       })
       .catch(error => {
@@ -182,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  findRestaurantBtn.addEventListener("click", () => {
-    window.location.href = "map.html"; // 버튼 클릭 시 이동
-  });
+  // findRestaurantBtn.addEventListener("click", () => {
+  //   window.location.href = "map.html"; // 버튼 클릭 시 이동
+  // });
 });
