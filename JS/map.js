@@ -5,9 +5,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const food = params.get('food');
     const keywordInput = document.getElementById('keyword');
 
+    // index.html에서 도출된 4개 음식 키워드 가져옴
+    const storedFoods = JSON.parse(localStorage.getItem('selectedFoods') || '[]');
+    console.log(storedFoods);
+
+    // 더보기 버튼 클릭하면 리스트 drawer 기능
+    const selectedFoodsContainer = document.querySelector('.selectedFoods');
+    plusBt.addEventListener('click', function () {
+        selectedFoodsContainer.classList.toggle('open');
+        menu_wrap.classList.toggle('open');
+        this.classList.toggle('open');
+    });
+
     if (city && food) {
         keywordInput.value = `${city} ${food}`;
     }
+
+    // storedFoods를 리스트로 나열
+    if (storedFoods.length > 0) {
+        const selectedFoodsContainer = document.querySelector('.selectedFoods');
+        const ul = document.createElement('ul');
+
+    storedFoods.forEach(storedFood => {
+        const li = document.createElement('li');
+        li.textContent = storedFood;
+        if (storedFood === food) {
+            li.classList.add('selected');  // 현재 선택된 키워드 강조
+        }
+        li.addEventListener('click', function() {
+            keywordInput.value = `${city} ${storedFood}`;
+            searchPlaces();
+            // 모든 li에서 'selected' 클래스 제거
+            ul.querySelectorAll('li').forEach(item => item.classList.remove('selected'));
+            // 클릭된 li에 'selected' 클래스 추가
+            li.classList.add('selected');
+        });
+        ul.appendChild(li);
+    });
+    selectedFoodsContainer.appendChild(ul);
+}
+
 
     var markers = [];
 
@@ -188,4 +225,16 @@ document.addEventListener("DOMContentLoaded", function () {
             el.removeChild(el.lastChild);
         }
     }
+
+    // // 이 중에 하나쯤은 있겠지 리스트에서 키워드 선택시 지도 다시 출력
+    // document.querySelectorAll('.categories li').forEach(item => {
+    //     item.addEventListener('click', function() {
+    //         const selectedFood = this.getAttribute('data-food');
+    //         keywordInput.value = `${city} ${selectedFood}`;
+    //         searchPlaces();
+    //     });
+    // });
+
+
+
 });
