@@ -10,6 +10,7 @@ const $c = document.querySelector("canvas");
 const ctx = $c.getContext("2d");
 const product = [];
 const colors = [];
+const proportions = []; 
 
 const getRandomColor = () => {
   const r = Math.floor(Math.random() * 256);
@@ -18,26 +19,37 @@ const getRandomColor = () => {
   return `rgb(${r},${g},${b})`;
 };
 
+const getRandomProportion = () => {
+  return Math.random() + 0.1; 
+};
+
 const newMake = () => {
   ctx.clearRect(0, 0, $c.width, $c.height);
   const [cw, ch] = [$c.width / 2, $c.height / 2];
-  const arc = Math.PI / (product.length / 2);
+  const totalProportions = proportions.reduce((acc, curr) => acc + curr, 0); 
+
+  let startAngle = 0;
 
   for (let i = 0; i < product.length; i++) {
+    const arc = (Math.PI * 2 * proportions[i]) / totalProportions; 
     ctx.beginPath();
     ctx.fillStyle = colors[i];
     ctx.moveTo(cw, ch);
-    ctx.arc(cw, ch, cw, arc * (i - 1), arc * i);
+    ctx.arc(cw, ch, cw, startAngle, startAngle + arc);
     ctx.fill();
     ctx.closePath();
+    startAngle += arc;
   }
 
   ctx.fillStyle = "#fff";
-  ctx.font = "18px Pretendard";
+  ctx.font = "20px Pretendard";
   ctx.textAlign = "center";
 
+  startAngle = 0;
+
   for (let i = 0; i < product.length; i++) {
-    const angle = arc * i + arc / 2;
+    const arc = (Math.PI * 2 * proportions[i]) / totalProportions;
+    const angle = startAngle + arc / 2;
 
     ctx.save();
 
@@ -53,6 +65,7 @@ const newMake = () => {
     });
 
     ctx.restore();
+    startAngle += arc;
   }
 };
 
@@ -67,8 +80,12 @@ const rotate = () => {
 
   setTimeout(() => {
     const ran = Math.floor(Math.random() * product.length);
-    const arc = 360 / product.length;
-    const rotate = 360 * 3 - (arc * ran + arc / 2);
+    const totalProportions = proportions.reduce((acc, curr) => acc + curr, 0);
+    const arc = 360 / totalProportions;
+    const rotate =
+      360 * 3 -
+      (arc * proportions.slice(0, ran).reduce((acc, curr) => acc + curr, 0) +
+        (arc * proportions[ran]) / 2);
 
     $c.style.transform = `rotate(${rotate}deg)`;
     $c.style.transition = "2s";
@@ -88,6 +105,7 @@ const addMenu = () => {
   if (menu && product.length < 10) {
     product.push(menu);
     colors.push(getRandomColor());
+    proportions.push(getRandomProportion());
     newMake();
     updateMenuList();
     input.value = "";
@@ -101,6 +119,7 @@ const addMenu = () => {
 const removeMenu = index => {
   product.splice(index, 1);
   colors.splice(index, 1);
+  proportions.splice(index, 1);
   newMake();
   updateMenuList();
 };
@@ -108,6 +127,7 @@ const removeMenu = index => {
 const resetRoulette = () => {
   product.length = 0;
   colors.length = 0;
+  proportions.length = 0;
   newMake();
   updateMenuList();
   document.getElementById("rotateBtn").innerText = "룰렛 돌리기";

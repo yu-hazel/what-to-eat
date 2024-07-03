@@ -1,44 +1,44 @@
 @charset "UTF-8";
 
-@font-face {
-  font-family: 'ONE-Mobile-POP';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://webfontworld.github.io/woowahan/BMJua.css');
+/* 배민 주아체 */
 
 body {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  background: #ff9d00;
+  font-family: 'BMJua';
 }
 
 .roulette-container {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 500px;
+  width: 750px;
 }
 
 canvas {
-  transition: 2s;
+  transition: transform 2s cubic-bezier(0.42, 0, 0.58, 1);
   pointer-events: none;
+  margin: 0 auto;
+  transform-origin: center center;
 }
 
 #marker {
   width: 50px;
   height: 10px;
-  background: #000;
+  background: #030303;
   position: absolute;
   top: 40%;
-  right: 0px;
-  /* canvas의 오른쪽에 위치 */
+  right: 20px;
   transform: translateY(-50%);
   z-index: 1;
 }
@@ -47,7 +47,6 @@ canvas {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* 메뉴가 넘칠 때 줄 바꿈 */
   margin-top: 20px;
 }
 
@@ -81,7 +80,6 @@ button:active {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  /* 메뉴가 넘칠 때 줄 바꿈 */
   justify-content: center;
 }
 
@@ -117,7 +115,7 @@ button:active {
   font-size: 16px;
   cursor: pointer;
   background-color: #febf00;
-  font-family: 'ONE-Mobile-POP';
+  font-family: ‘ONE-Mobile-POP’;
   position: absolute;
   top: 10px;
   right: 10px;
