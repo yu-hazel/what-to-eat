@@ -91,9 +91,11 @@ const rotate = () => {
     $c.style.transition = "2s";
 
     setTimeout(() => {
+      selectedFood = product[ran]; // 선택된 음식 저장
       alert(`오늘의 선택은?! ${product[ran]} 어떠신가요?? 😎`);
       document.getElementById("rotateBtn").innerText = "다시 돌리기";
       document.getElementById("rotateBtn").onclick = resetRoulette;
+      document.getElementById('view-on-map').style.display = 'block'; // map.html로 돌아가게 하는 버튼 표시
     }, 2000);
   }, 1);
 };
@@ -153,3 +155,11 @@ const updateMenuList = () => {
 
 newMake();
 updateMenuList();
+
+// 룰렛 결과와 사용자 입력 지역 저장 변수 추가
+let selectedFood = "";
+let userCity = localStorage.getItem('userCity') || '';
+
+document.getElementById('view-on-map').addEventListener('click', () => {
+  window.location.href = `map.html?city=${userCity}&food=${selectedFood}`;
+});

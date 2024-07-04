@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (city === "") return;
 
+    localStorage.setItem('userCity', city); // 지역명 로컬스토리지에 저장
+
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${openWeatherApiKey}`
     )
