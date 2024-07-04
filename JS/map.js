@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const homeButton = document.querySelector('#home-button');
 
     homeButton.addEventListener("click", ()=> {
-      window.history.back();
+        window.history.back();
     })
 
     // index.html에서 도출된 4개 음식 키워드 가져옴
@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedFoodsContainer.classList.toggle('open');
         menu_wrap.classList.toggle('open');
         this.classList.toggle('open');
+
+        // 더보기버튼 클릭할 때마다 마이너스로 바뀌게 함
+        if (this.classList.contains('fa-circle-plus')) {
+            this.classList.remove('fa-circle-plus');
+            this.classList.add('fa-circle-minus');
+        } else {
+            this.classList.remove('fa-circle-minus');
+            this.classList.add('fa-circle-plus');
+        }
     });
 
     if (city && food) {
