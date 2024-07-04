@@ -50,10 +50,12 @@ body {
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+/* 여기서부터 카카오 지도 외 커스텀 css */
 .learnMoreWrapper {display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 0;margin-bottom: 30px;font-family: 'BMJua';}
 .learnMoreWrapper p {margin-top: 20px;margin-bottom:5px;color:#5F5F5F;font-size: 20px;}
-.learnMoreWrapper button {font-family: inherit;font-size: 24px;border: none;background-color: #FA8937;padding: 10px 20px;border-radius: 15px;color: #fff;cursor: pointer;transition: 0.3s;}
-.learnMoreWrapper button:hover {opacity: 0.6;}
+.learnMoreWrapper button, .goToRoulette button {font-family: 'BMJua';font-size: 24px;border: none;background-color: #FA8937;padding: 10px 20px;border-radius: 15px;color: #fff;cursor: pointer;transition: 0.3s;}
+.learnMoreWrapper button:hover, .goToRoulette button:hover {opacity: 0.6;}
 
 h2 {margin-bottom: 30px; font-family: 'BMJua'; font-size: 32px; font-weight: 300;}
 
@@ -67,3 +69,7 @@ section {display: flex; justify-content: center; width: 100vw; gap: 20px; overfl
 
 #plusBt {font-size: 32px; position:absolute; z-index: 20; left: 60px; top: 50%; transform: translateY(-50%); transition: 0.3s; color:#FA8937;}
 #plusBt.open {left: 290px;}
+
+.goToRoulette { display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; z-index: 30; bottom: -20px; right: 15px;}
+.goToRoulette button { font-size: 16px; padding: 10px 15px;}
+.goToRoulette p { margin-bottom: 5px; font-family: 'BMJua'; color: #FA8937; }

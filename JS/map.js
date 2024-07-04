@@ -249,6 +249,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //     });
     // });
 
-
+    // 룰렛 돌려보기 버튼 클릭시 룰렛페이지로 이동
+    const goRoulette = document.getElementById('go-roulette');
+    goRoulette.addEventListener('click', ()=> {
+        window.location.href = 'roulette.html';
+    })
 
 });
