@@ -20,7 +20,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #06283D;
+  background: #ff9d00;
   position: relative;
   overflow: hidden;
 }
@@ -33,11 +33,16 @@ body {
   gap: 10px;
   margin-bottom: 20px;
   color: #fff;
+  text-shadow: 3px 3px 5px #000;
 }
 
 .title h2 {
-  font-size: 32px;
+  font-size: 50px;
   font-weight: 400;
+}
+
+.title p {
+  font-size: 20px;
 }
 
 .container {
@@ -51,6 +56,7 @@ body {
   font-family: 'Roboto', sans-serif;
   transition: 0.4s ease-out;
   z-index: 10;
+  box-shadow: 5px 5px 10px #000;
 }
 
 .search-box {
@@ -90,7 +96,7 @@ body {
   cursor: pointer;
   width: 50px;
   height: 50px;
-  color: #06283D;
+  /* color: #06283D; */
   background: #dff6ff;
   border-radius: 50%;
   font-size: 22px;
@@ -332,7 +338,10 @@ section .wave.wave4 {
 }
 
 #food-buttons button {
-  background-color: #FA8937;
+  background-color: #fb700c;
   color: #fff;
   font-family: 'BMJua';
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #000;
+  box-shadow: 3px 3px 5px #000;
 }
