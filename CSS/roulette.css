@@ -3,21 +3,31 @@
 @import url('https://webfontworld.github.io/woowahan/BMJua.css');
 /* 배민 주아체 */
 
+* {
+  font-family: 'BMJua';
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  
-  font-family: 'BMJua';
+  background: #ff9100;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .roulette-container {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,13 +43,12 @@ canvas {
 }
 
 #marker {
-  width: 50px;
-  height: 10px;
-  background: #030303;
+  width: 70px;
+  height: 60px;
   position: absolute;
-  top: 40%;
-  right: 20px;
-  transform: translateY(-50%);
+  top: 43%;
+  right: 10px;
+  transform: translateY(-50%) scaleX(-1);
   z-index: 1;
 }
 
@@ -60,7 +69,8 @@ input {
 }
 
 button {
-  background: #febf00;
+  background: #f2522e;
+  color: #fff;
   padding: 0.5rem 1rem;
   border: none;
   font-size: 1rem;
@@ -69,6 +79,7 @@ button {
   transition: 0.2s;
   cursor: pointer;
   margin-right: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 button:active {
@@ -119,4 +130,9 @@ button:active {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+#result-container button {
+  font-size: 25px;
+  /* background: #f2522e; */
 }

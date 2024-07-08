@@ -5,22 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>돌려돌려 돌림판 | 그래서 뭐 먹지?</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="../CSS/roulette.css">
 </head>
 
 <body>
-  <div class="roulette-container">
-    <div id="marker"></div>
-    <canvas width="700" height="700"></canvas>
-    <div class="controls">
-      <input type="text" id="menuInput" placeholder="이곳에 메뉴 추가!🙌🏻" onkeypress="handleKeyPress(event)">
-      <button onclick="addMenu()">메뉴 추가</button>
-      <button id="rotateBtn" onclick="rotate()">룰렛 돌리기</button>
+  <div class="container">
+    <div class="roulette-container">
+      <img id="marker" src="../img/pointer.png" alt="마커">
+      <canvas width="700" height="700"></canvas>
+      <div class="controls">
+        <input type="text" id="menuInput" placeholder="이곳에 메뉴 추가!🙌🏻" onkeypress="handleKeyPress(event)">
+        <button onclick="addMenu()">메뉴 추가</button>
+        <button id="rotateBtn" onclick="rotate()">룰렛 돌리기</button>
+      </div>
+      <div id="menuList"></div>
     </div>
-    <div id="menuList"></div>
-  </div>
-  <div id="result-container">
-    <button id="view-on-map" style="display: none;">결과를 지도로 다시 보기</button>
+    <div id="result-container">
+      <button id="view-on-map" class="animate__animated animate__pulse animate__infinite" style="display: none;">결과를 지도로
+        다시 보기</button>
+    </div>
   </div>
   <script src="../JS/roulette.js"></script>
 </body>

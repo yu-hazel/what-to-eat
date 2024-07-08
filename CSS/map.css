@@ -10,13 +10,12 @@ body {
     align-items: center;
     margin: 0 auto;
     /* overflow-x: hidden; */
-    background: #ff9d00;
-    
+    /* background: #f2522e; */
 }
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {display:flex;justify-content: center;position:relative;width:100vw;height:80vh;}
+.map_wrap {display:flex;justify-content: center;position:relative;width:100vw;height:100vh;}
 #map {width:100vw; overflow:visible;}
 #menu_wrap {position:absolute;top:60px;left:-100%;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255);z-index: 10;font-size:12px;transition:0.3s;}
 #menu_wrap.open {left:0;}
@@ -55,27 +54,43 @@ body {
 
 /* 여기서부터 카카오 지도 외 커스텀 css */
 .learnMoreWrapper {display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 0;margin-bottom: 30px;font-family: 'BMJua';}
-.learnMoreWrapper p {margin-top: 20px;margin-bottom:5px;color:#5F5F5F;font-size: 20px;color: #fff;
-  text-shadow: 2px 2px 3px #000;}
-.learnMoreWrapper button, .goToRoulette button {font-family: 'BMJua';font-size: 24px;border: none;background-color: #fb700c;padding: 10px 20px;border-radius: 15px;color: #fff;cursor: pointer;transition: 0.3s;color: #fff;
-  text-shadow: 2px 2px 3px #000;}
+.learnMoreWrapper p {margin-top: 20px;margin-bottom:5px;color:#5F5F5F;font-size: 20px;color: #fff; text-shadow: 0px 0px 5px #000;}
+.learnMoreWrapper button, .goToRoulette button {font-family: 'BMJua';font-size: 24px;border: none;background-color: #f2522e;padding: 10px 20px;border-radius: 15px;color: #fff;cursor: pointer;transition: 0.3s;color: #fff;
+  }
 .learnMoreWrapper button:hover, .goToRoulette button:hover {opacity: 0.6;}
 
-h2 {margin-bottom: 30px; font-family: 'BMJua'; font-size: 32px; font-weight: 300;color: #fff;text-shadow: 2px 2px 3px #000;}
+h2 {margin-bottom: 30px; font-family: 'BMJua'; font-size: 32px; font-weight: 300;color: #fff;text-shadow: 1px 1px 8px #000;}
 
 section {display: flex; justify-content: center; width: 100vw; gap: 20px; overflow: hidden; position: relative;}
 
-.selectedFoods {display:flex; flex-direction: column; align-items: center; position: absolute; top:0; left: -100%; z-index: 1; gap: 3px; background-color: #fff; padding: 20px; width: 250px; height: 100%; border-radius: 20px; font-family: 'BMJua'; font-size: 20px; transition: 0.3s; box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);}
-.selectedFoods.open {left: 0px;}
+.selectedFoods {display:flex; flex-direction: column; align-items: center; position: absolute; top:0; left: -100%; z-index: 1; gap: 3px; background-color: #fff; padding: 20px; width: 250px; height: 100%; border-radius: 20px; font-family: 'BMJua'; font-size: 24px; transition: 0.3s; box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);}
+.selectedFoods.open {left: 0px;color: #f2522e; height: 100vh;}
 .selectedFoods ul {display: flex; justify-content: center; align-items: center; gap: 10px; padding: 0;}
-.selectedFoods li {list-style-type: none; font-size: 16px; font-family: 'BMJua'; color: #656565;}
-.selectedFoods .selected {color:#fb700c;}
+.selectedFoods li {list-style-type: none; font-size: 16px; font-family: 'BMJua'; color: #000000;}
+.selectedFoods .selected {color:#f2522e; font-size: 19px;}
 
-#plusBt {font-size: 32px; position:absolute; z-index: 20; left: 60px; top: 50%; transform: translateY(-50%); transition: 0.3s; color:#fb700c;}
+#plusBt {font-size: 32px; position:absolute; z-index: 20; left: 60px; top: 50%; transform: translateY(-50%); transition: 0.3s; color:#f2522e;}
 #plusBt.open {left: 290px;}
 
 .goToRoulette { display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; z-index: 30; bottom: 25px; right: 15px;}
-.goToRoulette button { font-size: 16px; padding: 5px 15px; background-color: #fb700c; }
-.goToRoulette p { margin-bottom: 5px; font-family: 'BMJua'; color: #fff; text-shadow: 2px 2px 3px #000; }
+.goToRoulette button { font-size: 15px; padding: 5px 15px; background-color: #f2522e; }
+.goToRoulette p { margin-bottom: 5px; font-family: 'BMJua'; color: #fff; text-shadow: 0px 0px 5px #000; }
 
-.selectedFoods{background-color: #fb700c;}
+.selectedFoods{background-color: #fff;}
+a{text-decoration: none;}
+a:link { color: #fff; }
+a:visited { color: #fff; }
+a:hover { color: #fff; }
+a:active { color: #fff; }
+
+html, body { width: 100%; height: 100%; -webkit-font-smoothing: antialiased; display: flex; justify-content: center; align-items: center; }
+h1 { height: 100px; }
+h1 span { position: relative; top: 20px; display: inline-block; animation: bounce .4s ease infinite alternate; font-family: 'BMJua'; font-size: 60px; color: #3a3a3a; text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #000, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .3); }
+h1 span:nth-child(2) { animation-delay: .1s; }
+h1 span:nth-child(3) { animation-delay: .2s; }
+h1 span:nth-child(4) { animation-delay: .3s; }
+h1 span:nth-child(5) { animation-delay: .4s; }
+h1 span:nth-child(6) { animation-delay: .5s; }
+h1 span:nth-child(7) { animation-delay: .6s; }
+h1 span:nth-child(8) { animation-delay: .7s; }
+@keyframes bounce { 100% { top: -20px; text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 #CCC, 0 7px 0 #CCC, 0 8px 0 #CCC, 0 9px 0 #CCC, 0 50px 25px rgba(0, 0, 0, .2); } }

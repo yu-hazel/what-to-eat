@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         error404.classList.remove("fadeIn");
 
         const weatherAnimation = document.getElementById("weather-animation");
+      
         weatherAnimation.innerHTML = "";
 
         const iframe = document.createElement("iframe");
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         weatherDetails.style.display = "";
         weatherBox.classList.add("fadeIn");
         weatherDetails.classList.add("fadeIn");
-        container.style.height = "590px";
+        container.style.height = "470px";
 
         // 날씨에 따른 음식 추천 버튼 설정
         foodRecommendations.style.display = "block";
