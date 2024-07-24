@@ -191,7 +191,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // findRestaurantBtn.addEventListener("click", () => {
-  //   window.location.href = "map.html"; // 버튼 클릭 시 이동
-  // });
+
 });
