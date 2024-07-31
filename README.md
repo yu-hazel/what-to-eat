@@ -16,7 +16,7 @@ HTML5, CSS3, Vanilla JavaScript를 이용하여 구현하였습니다. <br>
 
 - 프로젝트 이름 : 그래서 뭐 먹지?
 - 진행 기간 : 2024.06.25 ~ 2024.07.15
-- 배포 주소 : https://yu-hazel.github.io/what-to-eat/HTML/index.html
+- [배포 주소](https://yu-hazel.github.io/what-to-eat/HTML/index.html)
 
 <br>
 
